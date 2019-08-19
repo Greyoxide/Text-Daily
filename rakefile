@@ -1,0 +1,13 @@
+require './text.rb'
+
+desc "OK lets get the text and then text it to the group"
+
+task :send_text do
+  puts "Fetching text"
+  text = Text.new
+
+  puts "Ok now were sending it to the list"
+  send_list = ENV['SEND_LIST'].split(',')
+  send_list.each { |token| text.send(token) }
+  puts "done."
+end
